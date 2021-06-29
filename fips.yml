@@ -3,8 +3,7 @@
 #
 ---
 exports:
-  header-dirs: [ llvm ]
-
-  modules:
-    llvm: .
+    header-dirs: [ llvm ] 
+    modules:
+        llvm: .
 
