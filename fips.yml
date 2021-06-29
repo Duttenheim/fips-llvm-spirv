@@ -1,0 +1,14 @@
+#
+# fips-llvm-spirv
+#
+---
+
+
+        
+exports:
+    header-dirs: 
+    - llvm/
+
+    modules:
+        llvm: .
+
