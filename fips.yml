@@ -6,9 +6,9 @@
 
         
 exports:
-    header-dirs: 
-    - llvm/
+  header-dirs: 
+  - llvm/
 
-    modules:
-        llvm: .
+  modules:
+    llvm: .
 
