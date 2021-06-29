@@ -1,0 +1,17 @@
+[component_0]
+type = TargetGroup
+name = SPIRV
+parent = TargetGroup
+has_asmprinter = 1
+has_disassembler = 1
+
+[component_1]
+type = Library
+name = SPIRVCodeGen
+parent = SPIRV
+required_libraries = 
+    AsmPrinter
+    CodeGen
+    Core
+    Target
+add_to_library_groups = SPIRV

@@ -1,5 +1,4 @@
-include "llvm/Target/Target.d"
-
+include "llvm/Target/Target.td"
 include "SPIRVInstrInfo.td"
 
 def SPIRVInstrInfo : InstrInfo;
