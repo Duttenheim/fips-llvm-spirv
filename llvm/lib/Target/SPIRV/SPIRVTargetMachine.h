@@ -7,6 +7,10 @@ namespace llvm
 
 class SPIRVTargetMachine : public LLVMTargetMachine
 {
-
+    const DataLayout dataLayout;
+    
+public:
+    SPIRVTargetMachine(const Module& M, const std::string& FS);
+    
 };
 }
