@@ -67,6 +67,9 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
   case sparcv9:        return "sparcv9";
   case spir64:         return "spir64";
   case spir:           return "spir";
+  case spirv32:        return "spirv32";
+  case spirv64:        return "spirv64";
+  case spirvl:         return "spirvl";
   case systemz:        return "s390x";
   case tce:            return "tce";
   case tcele:          return "tcele";
@@ -252,6 +255,7 @@ StringRef Triple::getEnvironmentTypeName(EnvironmentType Kind) {
   case MuslEABIHF: return "musleabihf";
   case MuslX32: return "muslx32";
   case Simulator: return "simulator";
+  case Vulkan: return "vulkan";
   }
 
   llvm_unreachable("Invalid EnvironmentType!");
@@ -732,6 +736,9 @@ static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
   case Triple::sparcv9:
   case Triple::spir64:
   case Triple::spir:
+  case Triple::spirvl:
+  case Triple::spirv32:
+  case Triple::spirv64:
   case Triple::tce:
   case Triple::tcele:
   case Triple::thumbeb:
@@ -1270,6 +1277,9 @@ static unsigned getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::UnknownArch:
     return 0;
 
+  case llvm::Triple::spirvl:
+    return 8;
+
   case llvm::Triple::avr:
   case llvm::Triple::msp430:
     return 16;
@@ -1298,6 +1308,7 @@ static unsigned getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::sparc:
   case llvm::Triple::sparcel:
   case llvm::Triple::spir:
+  case llvm::Triple::spirv32:
   case llvm::Triple::tce:
   case llvm::Triple::tcele:
   case llvm::Triple::thumb:
@@ -1324,6 +1335,7 @@ static unsigned getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::riscv64:
   case llvm::Triple::sparcv9:
   case llvm::Triple::spir64:
+  case llvm::Triple::spirv64:
   case llvm::Triple::systemz:
   case llvm::Triple::ve:
   case llvm::Triple::wasm64:
@@ -1383,6 +1395,7 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::sparc:
   case Triple::sparcel:
   case Triple::spir:
+  case Triple::spirv32:
   case Triple::tce:
   case Triple::tcele:
   case Triple::thumb:
@@ -1407,6 +1420,8 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::riscv64:        T.setArch(Triple::riscv32); break;
   case Triple::sparcv9:        T.setArch(Triple::sparc);   break;
   case Triple::spir64:         T.setArch(Triple::spir);    break;
+  case Triple::spirv64:        T.setArch(Triple::spirv32); break;
+  case Triple::spirvl:         T.setArch(Triple::spirv32); break;
   case Triple::wasm64:         T.setArch(Triple::wasm32);  break;
   case Triple::x86_64:         T.setArch(Triple::x86);     break;
   }
@@ -1455,6 +1470,7 @@ Triple Triple::get64BitArchVariant() const {
   case Triple::ve:
   case Triple::wasm64:
   case Triple::x86_64:
+  case Triple::spirv64:
     // Already 64-bit.
     break;
 
@@ -1473,6 +1489,8 @@ Triple Triple::get64BitArchVariant() const {
   case Triple::riscv32:         T.setArch(Triple::riscv64);    break;
   case Triple::sparc:           T.setArch(Triple::sparcv9);    break;
   case Triple::spir:            T.setArch(Triple::spir64);     break;
+  case Triple::spirv32:         T.setArch(Triple::spirv64);    break;
+  case Triple::spirvl:          T.setArch(Triple::spirv64);    break;
   case Triple::thumb:           T.setArch(Triple::aarch64);    break;
   case Triple::thumbeb:         T.setArch(Triple::aarch64_be); break;
   case Triple::wasm32:          T.setArch(Triple::wasm64);     break;

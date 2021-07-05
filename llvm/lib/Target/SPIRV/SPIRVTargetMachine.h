@@ -10,7 +10,14 @@ class SPIRVTargetMachine : public LLVMTargetMachine
     const DataLayout dataLayout;
     
 public:
-    SPIRVTargetMachine(const Module& M, const std::string& FS);
+    SPIRVTargetMachine(const Target& T
+                       , const Triple& TT
+                       , StringRef CPU
+                       , StringRef FS
+                       , TargetOptions Options
+                       , Optional<Reloc::Model> RM
+                       , Optional<CodeModel::Model> CM
+                       , CodeGenOpt::Level OptLevel);
     
 };
 }

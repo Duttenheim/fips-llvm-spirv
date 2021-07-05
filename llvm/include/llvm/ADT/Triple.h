@@ -93,6 +93,9 @@ public:
     hsail64,        // AMD HSAIL with 64-bit pointers
     spir,           // SPIR: standard portable IR for OpenCL 32-bit version
     spir64,         // SPIR: standard portable IR for OpenCL 64-bit version
+    spirv32,        // SPIR-V: 32 bit pointers
+    spirv64,        // SPIR-V: 64 bit pointers
+    spirvl,         // SPIR-V: logical addressing
     kalimba,        // Kalimba: generic kalimba
     shave,          // SHAVE: Movidius vector VLIW processors
     lanai,          // Lanai: Lanai 32-bit
@@ -226,6 +229,7 @@ public:
     CoreCLR,
     Simulator, // Simulator variants of other systems, e.g., Apple's iOS
     MacABI, // Mac Catalyst variant of Apple's iOS deployment target.
+    Vulkan,
     LastEnvironmentType = MacABI
   };
   enum ObjectFormatType {

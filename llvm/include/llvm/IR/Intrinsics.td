@@ -1741,17 +1741,4 @@ def int_experimental_vector_splice : DefaultAttrsIntrinsic<[llvm_anyvector_ty],
 // Target-specific intrinsics
 //===----------------------------------------------------------------------===//
 
-include "llvm/IR/IntrinsicsPowerPC.td"
-include "llvm/IR/IntrinsicsX86.td"
-include "llvm/IR/IntrinsicsARM.td"
-include "llvm/IR/IntrinsicsAArch64.td"
-include "llvm/IR/IntrinsicsXCore.td"
-include "llvm/IR/IntrinsicsHexagon.td"
-include "llvm/IR/IntrinsicsNVVM.td"
-include "llvm/IR/IntrinsicsMips.td"
-include "llvm/IR/IntrinsicsAMDGPU.td"
-include "llvm/IR/IntrinsicsBPF.td"
-include "llvm/IR/IntrinsicsSystemZ.td"
-include "llvm/IR/IntrinsicsWebAssembly.td"
-include "llvm/IR/IntrinsicsRISCV.td"
-include "llvm/IR/IntrinsicsVE.td"
+include "llvm/IR/IntrinsicsSPIRV.td"
